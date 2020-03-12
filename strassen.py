@@ -2,8 +2,6 @@ from math import ceil,log
 import numpy as np
 import random
 
-random.seed(0)
-
 def createRandomMatrix(n):
     maxVal = 1000
     matrix = []
@@ -19,13 +17,6 @@ def saveMatrix(A, B, filename):
         for line in matrix:
             f.write('\t'.join(map(str, line)) + '\n')
 
-n = int(input("n = "))
-matrixA = createRandomMatrix(n)
-matrixB = createRandomMatrix(n)
-saveMatrix(matrixA,matrixB,input("save in: "))
-print('Matrix A: \n', np.matrix(matrixA))
-print('\n')
-print('Matrix B: \n', np.matrix(matrixB))
 
 def read(filename):
     lines=open(filename, 'r').read().splitlines()
@@ -166,6 +157,15 @@ def saveMatrix(matrixA, filename):
             f.write('\n')
         for line in matrix:
             f.write('\t'.join(map(str, line)) + '\n')
+
+random.seed(0)
+n = int(input("n = "))
+matrixA = createRandomMatrix(n)
+matrixB = createRandomMatrix(n)
+saveMatrix(matrixA,matrixB,input("save in: "))
+print('Matrix A: \n', np.matrix(matrixA))
+print('\n')
+print('Matrix B: \n', np.matrix(matrixB))
 
 LEAF_SIZE = int(input("leaf size: "))
 A, B = read(input('path to file: '))
